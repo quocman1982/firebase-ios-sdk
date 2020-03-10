@@ -1,4 +1,4 @@
-// Copyright 2019 Google
+// Copyright 2020 Google
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,22 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "FIRCLSThreadArrayOperation.h"
+#import "FIRExceptionModel.h"
 
-#import "FIRStackFrame_Private.h"
+@interface FIRExceptionModel ()
 
-@implementation FIRCLSThreadArrayOperation
+@property(nonatomic, copy) NSString *name;
+@property(nonatomic, copy) NSString *reason;
 
-- (void)enumerateFramesWithBlock:(void (^)(FIRStackFrame *frame))block {
-  for (NSArray *frameArray in self.threadArray) {
-    for (FIRStackFrame *frame in frameArray) {
-      block(frame);
+@end
 
-      if ([self isCancelled]) {
-        break;
-      }
-    }
+@implementation FIRExceptionModel
+
+- (instancetype)initWithName:(NSString *)name reason:(NSString *)reason {
+  self = [super init];
+  if (!self) {
+    return nil;
   }
+
+  self.name = [name copy];
+  self.reason = [reason copy];
+
+  return self;
+}
+
++ (instancetype)exceptionModelWithName:(NSString *)name reason:(NSString *)reason {
+  return [[FIRExceptionModel alloc] initWithName:name reason:reason];
 }
 
 @end

@@ -19,7 +19,7 @@
 
 #ifdef __OBJC__
 #import <Foundation/Foundation.h>
-@class FIRCLSStackFrame;
+@class FIRStackFrame;
 #endif
 
 #define CLS_EXCEPTION_STRING_LENGTH_MAX (1024 * 16)
@@ -64,7 +64,7 @@ void FIRCLSExceptionRecordNSException(NSException* exception);
 void FIRCLSExceptionRecord(FIRCLSExceptionType type,
                            const char* name,
                            const char* reason,
-                           NSArray<FIRCLSStackFrame*>* frames,
+                           NSArray<FIRStackFrame*>* frames,
                            BOOL attemptDelivery);
 #endif
 

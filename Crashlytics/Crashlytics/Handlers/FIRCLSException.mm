@@ -22,9 +22,9 @@
 #include "FIRCLSHandler.h"
 #import "FIRCLSLogger.h"
 #include "FIRCLSProcess.h"
-#import "FIRCLSStackFrame.h"
 #import "FIRCLSUserLogging.h"
 #import "FIRCLSUtility.h"
+#import "FIRStackFrame_Private.h"
 
 #include "FIRCLSDemangleOperation.h"
 #import "FIRCLSReportManager_Private.h"
@@ -93,14 +93,14 @@ void FIRCLSExceptionRecordNSException(NSException *exception) {
   NSMutableArray *frames = [NSMutableArray new];
 
   for (NSNumber *address in returnAddresses) {
-    [frames addObject:[FIRCLSStackFrame stackFrameWithAddress:[address unsignedIntegerValue]]];
+    [frames addObject:[FIRStackFrame stackFrameWithAddress:[address unsignedIntegerValue]]];
   }
 
   FIRCLSExceptionRecord(FIRCLSExceptionTypeObjectiveC, [name UTF8String], [reason UTF8String],
                         frames, YES);
 }
 
-static void FIRCLSExceptionRecordFrame(FIRCLSFile *file, FIRCLSStackFrame *frame) {
+static void FIRCLSExceptionRecordFrame(FIRCLSFile *file, FIRStackFrame *frame) {
   FIRCLSFileWriteHashStart(file);
 
   FIRCLSFileWriteHashEntryUint64(file, "pc", [frame address]);
@@ -150,7 +150,7 @@ void FIRCLSExceptionWrite(FIRCLSFile *file,
                           FIRCLSExceptionType type,
                           const char *name,
                           const char *reason,
-                          NSArray<FIRCLSStackFrame *> *frames) {
+                          NSArray<FIRStackFrame *> *frames) {
   FIRCLSFileWriteSectionStart(file, "exception");
 
   FIRCLSFileWriteHashStart(file);
@@ -164,7 +164,7 @@ void FIRCLSExceptionWrite(FIRCLSFile *file,
     FIRCLSFileWriteHashKey(file, "frames");
     FIRCLSFileWriteArrayStart(file);
 
-    for (FIRCLSStackFrame *frame in frames) {
+    for (FIRStackFrame *frame in frames) {
       FIRCLSExceptionRecordFrame(file, frame);
     }
 
@@ -179,7 +179,7 @@ void FIRCLSExceptionWrite(FIRCLSFile *file,
 void FIRCLSExceptionRecord(FIRCLSExceptionType type,
                            const char *name,
                            const char *reason,
-                           NSArray<FIRCLSStackFrame *> *frames,
+                           NSArray<FIRStackFrame *> *frames,
                            BOOL attemptDelivery) {
   if (!FIRCLSContextIsInitialized()) {
     return;
