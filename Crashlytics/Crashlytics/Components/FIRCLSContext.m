@@ -61,7 +61,7 @@ FIRCLSContextInitData FIRCLSContextBuildInitData(FIRCLSInternalReport* report,
 
   memset(&initData, 0, sizeof(FIRCLSContextInitData));
 
-  initData.customBundleId = NULL;
+  initData.customBundleId = nil;
   initData.installId = [installIDModel.installID UTF8String];
   initData.sessionId = [[report identifier] UTF8String];
   initData.rootPath = [[report path] UTF8String];
@@ -78,7 +78,7 @@ FIRCLSContextInitData FIRCLSContextBuildInitData(FIRCLSInternalReport* report,
   // we're going to leave this disabled. It does work in the exception case, but will ultimtely
   // result in the following crash to be discared. Usually that crash isn't interesting. But, if it
   // was, we'd never have a chance to see it.
-  initData.delegate = NULL;
+  initData.delegate = nil;
 
 #if CLS_MACH_EXCEPTION_SUPPORTED
   __block exception_mask_t mask = 0;

@@ -24,7 +24,6 @@ NS_SWIFT_NAME(StackFrame)
 @interface FIRStackFrame : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
 
 /**
  * Initializes a symbolicated Stack Frame with the given required fields. Symbolicated

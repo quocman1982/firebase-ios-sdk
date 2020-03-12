@@ -27,7 +27,6 @@ NS_SWIFT_NAME(ExceptionModel)
 @interface FIRExceptionModel : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
 
 /**
  * Initializes an Exception Model model with the given required fields.
