@@ -14,7 +14,6 @@
 
 #import <XCTest/XCTest.h>
 
-#import "FIRExceptionModel.h"
 #import "FIRExceptionModel_Private.h"
 #import "FIRStackFrame_Private.h"
 

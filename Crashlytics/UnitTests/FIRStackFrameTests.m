@@ -14,7 +14,6 @@
 
 #import <XCTest/XCTest.h>
 
-#import "FIRStackFrame.h"
 #import "FIRStackFrame_Private.h"
 
 @interface FIRStackFrameTests : XCTestCase

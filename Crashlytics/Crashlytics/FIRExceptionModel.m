@@ -29,8 +29,8 @@
     return nil;
   }
 
-  self.name = [name copy];
-  self.reason = [reason copy];
+  _name = [name copy];
+  _reason = [reason copy];
 
   return self;
 }

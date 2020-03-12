@@ -14,8 +14,6 @@
 
 #import "FIRCLSThreadArrayOperation.h"
 
-#import "FIRStackFrame_Private.h"
-
 @implementation FIRCLSThreadArrayOperation
 
 - (void)enumerateFramesWithBlock:(void (^)(FIRStackFrame *frame))block {

@@ -40,15 +40,15 @@
 }
 
 - (BOOL)updateStackFrame:(FIRStackFrame *)frame {
-  FIRStackFrame *matchedFrame = [_frames objectForKey:@([frame address])];
+  FIRStackFrame *matchedFrame = [_frames objectForKey:@(frame.address)];
 
   if (!matchedFrame) {
     return NO;
   }
 
-  [frame setSymbol:[matchedFrame symbol]];
-  [frame setLibrary:[matchedFrame library]];
-  [frame setOffset:[matchedFrame offset]];
+  [frame setSymbol:matchedFrame.symbol];
+  [frame setLibrary:matchedFrame.library];
+  [frame setOffset:matchedFrame.offset];
 
   return YES;
 }

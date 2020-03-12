@@ -38,11 +38,11 @@
     return nil;
   }
 
-  self.symbol = [symbol copy];
-  self.fileName = [file copy];
-  self.lineNumber = (uint32_t)line;
+  _symbol = [symbol copy];
+  _fileName = [file copy];
+  _lineNumber = (uint32_t)line;
 
-  self.isSymbolicated = true;
+  _isSymbolicated = true;
 
   return self;
 }

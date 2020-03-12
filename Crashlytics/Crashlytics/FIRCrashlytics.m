@@ -20,9 +20,6 @@
 #import "FBLPromises.h"
 #endif
 
-#import "FIRExceptionModel_Private.h"
-#import "FIRStackFrame_Private.h"
-
 #include "FIRCLSCrashedMarkerFile.h"
 #import "FIRCLSDataCollectionArbiter.h"
 #import "FIRCLSDefines.h"
