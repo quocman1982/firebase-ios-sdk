@@ -16,6 +16,9 @@
 
 #include "FIRCLSException.h"
 
+#import "FIRExceptionModel_Private.h"
+#import "FIRStackFrame_Private.h"
+
 #include "FIRCLSApplication.h"
 #include "FIRCLSFile.h"
 #include "FIRCLSGlobals.h"
@@ -24,7 +27,6 @@
 #include "FIRCLSProcess.h"
 #import "FIRCLSUserLogging.h"
 #import "FIRCLSUtility.h"
-#import "FIRStackFrame_Private.h"
 
 #include "FIRCLSDemangleOperation.h"
 #import "FIRCLSReportManager_Private.h"
@@ -74,6 +76,14 @@ void FIRCLSExceptionInitialize(FIRCLSExceptionReadOnlyContext *roContext,
 #endif
 
   rwContext->customExceptionCount = 0;
+}
+
+void FIRCLSExceptionRecordModel(FIRExceptionModel *exceptionModel) {
+  const char *name = [[exceptionModel.name copy] UTF8String];
+  const char *reason = [[exceptionModel.reason copy] UTF8String];
+
+  FIRCLSExceptionRecord(FIRCLSExceptionTypeCustom, name, reason, [exceptionModel.stackTrace copy],
+                        NO);
 }
 
 void FIRCLSExceptionRecordNSException(NSException *exception) {
