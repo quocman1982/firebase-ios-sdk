@@ -33,7 +33,7 @@ static NSString *const kApiaryRestBaseUrlIPV6 = @"https://appinvite-ipv6-pa.goog
 static NSString *const kIosPostInstallAttributionRestBaseUrlIPV4 =
     @"https://firebasedynamiclinks-ipv4.googleapis.com/v1";
 static NSString *const kIosPostInstallAttributionRestBaseUrlIPV6 =
-    @"https://firebasedynamiclinks-ipv6.googleapis.com/v1";
+    @"https://firebasedynamiclinks-ipv4.googleapis.com/v1";
 static NSString *const kIosPostInstallAttributionRestBaseUrlUniqueMatch =
     @"https://firebasedynamiclinks.googleapis.com/v1";
 
